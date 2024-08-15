@@ -22,6 +22,15 @@ public class App {
     * el mensaje: "Ocurrió un error inesperado".
     */
 
+    public static String Escribir_asc(int a, int b, int c) {
+      if (a == b || a == c || b == c) {
+          return "Error: La función no considera números iguales";
+      }
+      int max = Math.max(a, Math.max(b, c));
+      int min = Math.min(a, Math.min(b, c));
+      int mid = a + b + c - max - min;
+      return max + " - " + mid + " - " + min;
+  }
 
 
    /*
@@ -33,6 +42,17 @@ public class App {
     * 
     */
 
+    public static byte Obtener_cifras(int num) {
+      if (num < 0 || num > 50000) {
+          return 0;
+      }
+      byte cifras = 0;
+      while (num > 0) {
+          num /= 10;
+          cifras++;
+      }
+      return cifras;
+  }
 
 
    /*
@@ -49,6 +69,15 @@ public class App {
     * 
     */
 
+    public static String Clasificar_char(char c) {
+      if (Character.isLetter(c)) {
+          return "ES LETRA";
+      } else if (Character.isDigit(c)) {
+          return "ES NUMERO";
+      } else {
+          return "ESPECIAL";
+      }
+  }
 
 
    /*
@@ -70,7 +99,17 @@ public class App {
     * 
     */
 
-   
+    public static String Hallar_division_exacta(int a, int b) {
+      if (a <= 0 || b <= 0) {
+          return "NO SE ADMITE CERO O NEGATIVOS";
+      }
+      if (a % b == 0) {
+          return "DIVISION EXACTA";
+      } else {
+          return "DIVISION NO EXACTA";
+      }
+  }
+
 
    /*
     * 5. En la siguiente tabla se encuentra la información de las habitaciones de
@@ -97,6 +136,28 @@ public class App {
     * "Ocurrió un error inesperado".
     */
 
+    public static String Consultar_hab(byte camas, String tipo) {
+      if (camas < 1 || camas > 3 || !(tipo.equals("AA") || tipo.equals("VE"))) {
+          return "DATOS NO VÁLIDOS";
+      }
+      String habitaciones = "";
+      if (camas == 2) {
+          if (tipo.equals("AA")) {
+              habitaciones += "101|301";
+          } else {
+              habitaciones += "102|202";
+          }
+      } else if (camas == 1) {
+          if (tipo.equals("VE")) {
+              habitaciones += "102";
+          }
+      } else if (camas == 3) {
+          if (tipo.equals("AA")) {
+              habitaciones += "201";
+          }
+      }
+      return habitaciones;
+  }
 
    
    /*
@@ -114,10 +175,20 @@ public class App {
     * "Ocurrió un error inesperado".
     */
 
-
-
-
-
+    public static String Obtener_obs(boolean plato1, boolean plato2, boolean plato3) {
+      if (!plato1 && !plato2 && !plato3) {
+          return "PLATOS NO VÁLIDOS";
+      }
+      if (plato1 && plato2 && plato3) {
+          return "BEBIDA Y POSTRE";
+      } else if (plato1 && plato2) {
+          return "BEBIDA";
+      } else if (plato1) {
+          return "POSTRE";
+      } else {
+          return "";
+      }
+  }
 
 
    /*
@@ -141,4 +212,21 @@ public class App {
     * "Ocurrió un error inesperado".
     * 
     */
-
+    public static String Conocer_invitacion(String color) {
+      switch (color) {
+          case "verde":
+              return "Invita a las cervezas";
+          case "azul":
+              return "Invita a la pizza";
+          case "rojo":
+              return "Invita al postre";
+          case "amarillo":
+              return "Paga el parqueadero de todos";
+          case "blanco":
+          case "negro":
+              return "Vaya y disfrute";
+          default:
+              return "Error en el color";
+      }
+  }
+}
